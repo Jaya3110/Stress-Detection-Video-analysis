@@ -1,0 +1,555 @@
+/* Color Palette */
+:root {
+    --primary: #D4A373;
+    --secondary: #FAEDCD;
+    --background: #FEFAE0;
+    --accent-light: #E9EDC9;
+    --accent-dark: #CCD5AE;
+    --text-dark: #333333;
+    --text-light: #555555;
+    --stress-yes: #e74c3c;
+    --stress-no: #2ecc71;
+    --error: #e74c3c;
+    --warning: #f39c12;
+    --info: #3498db;
+  }
+  
+  /* Base Styles */
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  }
+  
+  body {
+    background-color: var(--background);
+    color: var(--text-dark);
+    line-height: 1.6;
+  }
+  
+  .app-container {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+  }
+  
+  /* Header Styles */
+  .app-header {
+    background-color: var(--primary);
+    color: white;
+    padding: 2rem;
+    text-align: center;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    position: relative;
+    z-index: 100;
+  }
+  
+  .app-header h1 {
+    font-size: 2rem;
+    font-weight: 600;
+    margin: 0;
+  }
+  
+  /* Main Content Styles */
+  .app-main {
+    flex: 1;
+    padding: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+    width: 100%;
+  }
+  
+  /* Upload Section */
+  .upload-section {
+    background-color: white;
+    border-radius: 8px;
+    padding: 2rem;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+    margin-bottom: 2rem;
+    transition: all 0.3s ease;
+  }
+  
+  .video-container {
+    width: 100%;
+    aspect-ratio: 16/9;
+    background-color: var(--secondary);
+    border-radius: 6px;
+    overflow: hidden;
+    margin-bottom: 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+  }
+  
+  .video-preview {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    background-color: #000;
+  }
+  
+  .video-placeholder {
+    color: var(--text-light);
+    font-size: 1.2rem;
+    text-align: center;
+    padding: 2rem;
+  }
+  
+  .file-upload-hint {
+    font-size: 0.9rem;
+    color: var(--text-light);
+    margin-top: 0.5rem;
+  }
+  
+  /* Controls */
+  .controls {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+  
+  button, .upload-btn {
+    padding: 0.8rem 1.5rem;
+    border: none;
+    border-radius: 6px;
+    font-size: 1rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .upload-btn {
+    background-color: var(--accent-dark);
+    color: white;
+  }
+  
+  .upload-btn:hover {
+    background-color: #b8c29b;
+    transform: translateY(-1px);
+  }
+  
+  .analyze-btn {
+    background-color: var(--primary);
+    color: white;
+  }
+  
+  .analyze-btn:hover {
+    background-color: #c08d63;
+    transform: translateY(-1px);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  }
+  
+  .analyze-btn:disabled {
+    background-color: #cccccc;
+    cursor: not-allowed;
+    transform: none;
+    box-shadow: none;
+  }
+  
+  /* Progress Indicators */
+  .progress-container {
+    width: 100%;
+    height: 24px;
+    background-color: var(--accent-light);
+    border-radius: 12px;
+    margin: 1rem 0;
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .progress-bar {
+    height: 100%;
+    background-color: var(--primary);
+    transition: width 0.3s ease;
+    position: relative;
+  }
+  
+  .progress-text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+    font-weight: 500;
+    font-size: 0.8rem;
+    text-shadow: 0 0 2px rgba(0, 0, 0, 0.3);
+    z-index: 1;
+  }
+  
+  .progress-steps {
+    display: flex;
+    justify-content: space-between;
+    margin: 1.5rem 0;
+    position: relative;
+  }
+  
+  .step {
+    flex: 1;
+    text-align: center;
+    position: relative;
+    color: var(--text-light);
+    z-index: 1;
+  }
+  
+  .step:not(:last-child)::after {
+    content: '';
+    position: absolute;
+    top: 15px;
+    left: 50%;
+    width: 100%;
+    height: 2px;
+    background: var(--accent-light);
+    z-index: -1;
+  }
+  
+  .step.active {
+    color: var(--primary);
+  }
+  
+  .step.active .step-number {
+    background: var(--primary);
+    color: white;
+  }
+  
+  .step-number {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background: var(--accent-light);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 0.5rem;
+    position: relative;
+    z-index: 1;
+    transition: all 0.3s ease;
+  }
+  
+  .step-label {
+    font-size: 0.9rem;
+  }
+  
+  /* Results Section */
+  .results-section {
+    background-color: white;
+    border-radius: 8px;
+    padding: 2rem;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+    transition: all 0.3s ease-out;
+    opacity: 0;
+    max-height: 0;
+    overflow: hidden;
+  }
+  
+  .results-section.visible {
+    opacity: 1;
+    max-height: 2000px;
+  }
+  
+  .results-section h2 {
+    margin-bottom: 1.5rem;
+    color: var(--primary);
+    font-size: 1.5rem;
+    border-bottom: 2px solid var(--accent-light);
+    padding-bottom: 0.5rem;
+  }
+  
+  .results-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+  }
+  
+  .result-item {
+    display: flex;
+    justify-content: space-between;
+    padding: 1rem;
+    background-color: var(--secondary);
+    border-radius: 6px;
+    align-items: center;
+    transition: transform 0.2s ease;
+  }
+  
+  .result-item:hover {
+    transform: translateY(-2px);
+  }
+  
+  .result-label {
+    font-weight: 600;
+    color: var(--text-dark);
+  }
+  
+  .result-value {
+    color: var(--text-light);
+    font-weight: 500;
+  }
+  
+  /* Emotion Timeline */
+  .timeline-section {
+    margin-top: 2rem;
+    padding-top: 1rem;
+    border-top: 1px solid var(--accent-light);
+  }
+  
+  .timeline-section h3 {
+    color: var(--primary);
+    margin-bottom: 1rem;
+  }
+  
+  .timeline-container {
+    display: flex;
+    height: 30px;
+    margin: 1rem 0;
+    border-radius: 4px;
+    overflow: hidden;
+    background-color: var(--secondary);
+  }
+  
+  .timeline-entry {
+    height: 100%;
+    transition: all 0.3s ease;
+    cursor: help;
+    position: relative;
+  }
+  
+  .timeline-entry:hover {
+    filter: brightness(1.1);
+  }
+  
+  .timeline-legend {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    justify-content: center;
+    margin-top: 1rem;
+  }
+  
+  .legend-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.9rem;
+  }
+  
+  .legend-color {
+    width: 16px;
+    height: 16px;
+    border-radius: 3px;
+  }
+  
+  /* Error Message */
+  .error-message {
+    color: var(--error);
+    margin-top: 1rem;
+    text-align: center;
+    padding: 0.8rem;
+    background-color: rgba(231, 76, 60, 0.1);
+    border-radius: 4px;
+    border-left: 4px solid var(--error);
+  }
+  
+  /* Footer */
+  .app-footer {
+    background-color: var(--primary);
+    color: white;
+    text-align: center;
+    padding: 1.5rem;
+    margin-top: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+  
+  .privacy-btn {
+    background: none;
+    border: none;
+    color: white;
+    text-decoration: underline;
+    cursor: pointer;
+    font-size: 0.9rem;
+  }
+  
+  .privacy-btn:hover {
+    opacity: 0.9;
+  }
+  
+  /* Modal Styles */
+  .modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.8);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 2000;
+    backdrop-filter: blur(3px);
+    animation: fadeIn 0.3s ease-out;
+  }
+  
+  .modal-content {
+    background-color: white;
+    border-radius: 12px;
+    width: 100%;
+    max-width: 500px;
+    box-shadow: 0 5px 30px rgba(0, 0, 0, 0.3);
+    overflow: hidden;
+    transform: translateY(0);
+    transition: all 0.3s ease;
+    margin: 0 20px;
+  }
+  
+  .modal-header {
+    padding: 20px;
+    background: var(--primary);
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .modal-header h3 {
+    margin: 0;
+    font-size: 1.4rem;
+  }
+  
+  .modal-close-btn {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 1.8rem;
+    cursor: pointer;
+    padding: 0 10px;
+    line-height: 1;
+    transition: transform 0.2s ease;
+  }
+  
+  .modal-close-btn:hover {
+    transform: scale(1.1);
+  }
+  
+  .modal-body {
+    padding: 25px;
+    color: var(--text-dark);
+    line-height: 1.6;
+  }
+  
+  .modal-body ul {
+    padding-left: 20px;
+    margin: 15px 0;
+  }
+  
+  .modal-body li {
+    margin-bottom: 0.5rem;
+  }
+  
+  .modal-body a {
+    color: var(--primary);
+    text-decoration: underline;
+  }
+  
+  .modal-footer {
+    padding: 15px 25px;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    border-top: 1px solid #eee;
+  }
+  
+  .delete-option {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.9rem;
+    color: var(--text-dark);
+  }
+  
+  .delete-option input {
+    margin-right: 0.5rem;
+  }
+  
+  .primary-btn {
+    background-color: var(--primary);
+    color: white;
+    border: none;
+    padding: 12px 20px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: background-color 0.2s;
+    width: 100%;
+  }
+  
+  .primary-btn:hover {
+    background-color: #c08d63;
+  }
+  
+  /* Animations */
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      backdrop-filter: blur(0);
+    }
+    to {
+      opacity: 1;
+      backdrop-filter: blur(3px);
+    }
+  }
+  
+  /* Responsive Design */
+  @media (max-width: 768px) {
+    .app-main {
+      padding: 1rem;
+    }
+    
+    .upload-section {
+      padding: 1.5rem;
+    }
+    
+    .results-grid {
+      grid-template-columns: 1fr;
+    }
+    
+    .controls {
+      flex-direction: column;
+    }
+    
+    .step-label {
+      font-size: 0.8rem;
+    }
+    
+    .modal-body {
+      padding: 20px 15px;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .app-header h1 {
+      font-size: 1.5rem;
+    }
+    
+    .video-placeholder {
+      font-size: 1rem;
+    }
+    
+    button, .upload-btn {
+      padding: 0.7rem 1rem;
+      font-size: 0.9rem;
+    }
+    
+    .results-section {
+      padding: 1.5rem;
+    }
+    
+    .result-item {
+      padding: 0.8rem;
+    }
+  }

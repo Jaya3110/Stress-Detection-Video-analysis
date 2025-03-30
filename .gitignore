@@ -1,0 +1,29 @@
+echo "
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.so
+venv/
+*.zip
+*.dll
+*.pyd
+
+# Node.js
+node_modules/
+dist/
+npm-debug.log*
+
+# Environment
+.env
+.env.local
+.DS_Store
+
+# Large files
+*.bin
+*.dat
+*.pkl
+*.h5
+*.pt
+" > .gitignore
