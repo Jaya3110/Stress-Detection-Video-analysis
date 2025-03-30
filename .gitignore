@@ -1,4 +1,19 @@
 echo "
+
+echo "
+# Media files
+*.mp4
+
+# ML model files (adjust as needed)
+ml-model/weights/
+ml-model/data/
+ml-model/checkpoints/
+
+# Node.js
+package-lock.json
+" >> .gitignore
+
+
 # Python
 __pycache__/
 *.pyc
