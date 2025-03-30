@@ -2,7 +2,7 @@ from flask import Flask, request, jsonify
 import os
 from project import extract_rppg_and_emotion, compute_bp
 import numpy as np
-
+# Suppress TensorFlow info logs
 app = Flask(__name__)
 
 @app.route("/process", methods=["POST"])
